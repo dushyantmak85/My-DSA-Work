@@ -1,0 +1,16 @@
+{
+    "python.REPL.enableREPLSmartSend": false,
+    "django.snippets.exclude": [
+
+        "cms",
+        "wagtail"
+    ],
+    "C_Cpp.files.exclude": {
+
+        "**/.vscode": true,
+        "**/.vs": true
+    },
+    "json.schemas": [
+        
+    ]
+}
