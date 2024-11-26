@@ -1,17 +1,17 @@
 #include <iostream>
+void swap(int* a, int* b) {
+    int temp = *a; // Store the value of a in temp
+    *a = *b;       // Assign the value of b to a
+    *b = temp;     // Assign the value of temp to b
+}
 void SelectionSort(int *arr,int size){
     for(int i=0;i<size-1;i++){
         int minIndex=i,temp;
         for(int j=i+1;j<size;j++){
-            int maxIndex=j;
-            if (arr[minIndex]>arr[maxIndex]){     
-                temp=arr[minIndex];
-                arr[minIndex]=arr[maxIndex];
-                arr[maxIndex]=temp;             
-            }else{
-                continue;
-            }
-        }
+            if (arr[j]<arr[minIndex]){     
+               minIndex=j;          
+            }            
+        }swap(&arr[minIndex],&arr[i]);
     }
 }
 

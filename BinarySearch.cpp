@@ -19,11 +19,8 @@ void BinarySearch(int *arr,int size,int element){
 }
 
 int main() {
-    int even[6]={2,3,6,8,9,10};
-    int odd[5]={1,5,8,9,12};
-    BinarySearch(even,6,10);
-    BinarySearch(odd,5,13);
-    
+    int odd[5]={1,3,4,5,6};
+    BinarySearch(odd,5,3);
     
     return 0;
 }

@@ -12,5 +12,8 @@
     },
     "json.schemas": [
         
-    ]
+    ],
+    "files.associations": {
+        "iostream": "cpp"
+    }
 }
