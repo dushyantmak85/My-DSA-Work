@@ -59,6 +59,7 @@ int main() {
     InsertNode(tail,1,12);
     InsertNode(tail,12,6);
     InsertNode(tail,6,7);
+    InsertNode(tail,12,9);
     print(tail);
     cout<<endl;
     cout<<(check(tail));

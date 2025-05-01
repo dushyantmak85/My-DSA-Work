@@ -31,7 +31,7 @@ Node * BinaryTree(Node * root){
 void LevelOrderTraversal(Node * root){
     queue <Node*> q;
     q.push(root);
-    q.push(NULL);
+    q.push(NULL); 
     while(!q.empty()){
         Node*temp=q.front();
         q.pop();
@@ -117,12 +117,8 @@ void BuildfromLevelOrderTraversal(Node * &root){
 
 int main() {
     Node* root=NULL;
-    BuildfromLevelOrderTraversal(root);
+    BinaryTree(root);
     LevelOrderTraversal(root);
-    Inorder(root);
-    cout<<endl;
-    Postorder(root);
-    cout<<endl;
-    Preorder(root);
+
     return 0;
 }

@@ -67,3 +67,49 @@ int main() {
 
     return 0;
 }
+
+void merge(int *arr, int s, int e) {
+    int mid = (e-s) / 2;
+    int l1 = mid - s ;
+    int l2 = e - mid+1;
+
+    int *FirstArray = new int[l1];
+    int *SecondArray = new int[l2];
+
+    // Copying elements to FirstArray
+    int k = s;
+    for (int i = 0; i < l1; i++) {
+        FirstArray[i] = arr[k++]; 
+    }
+
+    // Copying elements to SecondArray
+    k = mid + 1;
+    for (int i = 0; i < l2; i++) {
+        SecondArray[i] = arr[k++]; 
+    }
+
+    // Merging two sorted arrays
+    int index1 = s, index2 = e;
+    k = s;
+    while (index1 <=mid && index2 >= mid+1) {
+        if (FirstArray[index1] < SecondArray[index2]) {
+            arr[k++] = FirstArray[index1++];
+        } else {
+            arr[k++] = SecondArray[index2++];  
+        }
+    }
+
+    // Copy remaining elements of FirstArray if any
+    while (index1 < l1) {
+        arr[k++] = FirstArray[index1++];
+    }
+
+    // Copy remaining elements of SecondArray if any
+    while (index2 < l2) {
+        arr[k++] = SecondArray[index2++];
+    }
+
+    delete[] FirstArray;
+    delete[] SecondArray;
+}
+
