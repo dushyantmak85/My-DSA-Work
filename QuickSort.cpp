@@ -1,51 +1,47 @@
 #include <iostream>
+
+#include <vector>
 using namespace std;
 
-int partition(int arr[],int s,int e){
-    int pivot = arr[s];
-    int count=0;
-    for(int i=s+1;i<=e;i++){
-        if(arr[i]<=pivot){
-            count++;
-        }
+int partition(vector<int> &arr,int start,int end){
+    int pivot=arr[end];
+    int idx=start-1;
+    for(int j=start;j<end;j++){
+        if(arr[j]<=pivot){
+            idx++;
+            swap(arr[j],arr[idx]);
+        }        
     }
+    idx++;
+    swap(arr[idx],arr[end]);
 
-    int pivotIndex=s+count;
-    swap(arr[pivotIndex],arr[s]);
-
-    int i=s,j=e;
-    while(i<pivotIndex && j>pivotIndex){
-        while(arr[i]<=pivot){
-            i++;
-        }
-        while(arr[j]>pivot){
-            j--;
-        }
-        if(i<pivot && j>pivot){
-            swap(arr[i++],arr[j--]);
-        }
-    }
-    return pivotIndex;
+    return idx;
 
 }
 
-void QuickSort(int arr[],int s,int e){
-    if(s>=e){
-        return ;
+void quickSort(vector<int> &arr,int start,int end){
+    if(start<end){
+        int Pivindex=partition(arr,start,end);
+        quickSort(arr,start,Pivindex-1);
+        quickSort(arr,Pivindex+1,end);
     }
 
-    int p=partition(arr, s, e);
-    QuickSort( arr,s,p-1);
-    QuickSort( arr,p+1,e);
-    
 }
 
 int main() {
-    int arr[5]={23,14,156,92,88};
-    QuickSort(arr,0,4);
-    for(int i=0;i<5;i++){
-        cout<<arr[i]<<" ";
-    }
+    vector<int> arr = {10, 7, 8, 9, 1, 5};
+    int n = arr.size();
+    cout << "Unsorted array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;   
+
+    quickSort(arr, 0, n - 1);
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+
     
     return 0;
 }
